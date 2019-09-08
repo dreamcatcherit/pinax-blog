@@ -232,7 +232,7 @@ class Revision(models.Model):
         on_delete=models.CASCADE
     )
 
-    title = models.CharField(_("Title"), max_length=90)
+    title = models.CharField(_("Title"), max_length=150)
     teaser = models.TextField(_("Teaser"))
 
     content = models.TextField(_("Content"))
