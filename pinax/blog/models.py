@@ -72,8 +72,8 @@ class Post(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
     section = models.ForeignKey(Section, on_delete=models.CASCADE)
 
-    title = models.CharField(_("Title"), max_length=90)
-    slug = models.SlugField(_("Slug"), max_length=90, unique=settings.PINAX_BLOG_SLUG_UNIQUE)
+    title = models.CharField(_("Title"), max_length=150)
+    slug = models.SlugField(_("Slug"), max_length=255, unique=settings.PINAX_BLOG_SLUG_UNIQUE)
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="posts",
