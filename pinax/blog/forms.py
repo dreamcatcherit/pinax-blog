@@ -78,11 +78,12 @@ class AdminPostForm(PostFormMixin, forms.ModelForm):
 
     title = forms.CharField(
         label=_("Title"),
-        max_length=90,
+        max_length=150,
         widget=forms.TextInput(attrs={"style": "width: 50%;"}),
     )
     slug = forms.CharField(
         label=_("Slug"),
+        max_length=255,
         widget=forms.TextInput(attrs={"style": "width: 50%;"})
     )
     teaser = forms.CharField(
