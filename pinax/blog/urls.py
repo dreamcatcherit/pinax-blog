@@ -3,6 +3,7 @@ from django.conf.urls import url
 from .conf import settings
 from .views import (
     BlogIndexView,
+    BlogArchiveView,
     DateBasedPostDetailView,
     ManageCreatePost,
     ManageDeletePost,
