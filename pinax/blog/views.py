@@ -74,6 +74,14 @@ class SectionIndexView(BlogIndexView):
         return queryset
 
 
+class BlogArchiveView(BlogIndexView):
+
+    def get_queryset(self):
+        queryset = super(BlogArchiveView, self).get_queryset()
+        queryset = queryset.filter(published__month=self.kwargs.get("month"), published__year=self.kwargs.get("year"))
+        return queryset
+
+
 class SlugUniquePostDetailView(DetailView):
     model = Post
     template_name = "pinax/blog/blog_post.html"
