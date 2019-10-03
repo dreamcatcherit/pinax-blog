@@ -83,7 +83,6 @@ class BlogArchiveView(BlogIndexView):
         current_year = current_time.year
         queryset = super(BlogArchiveView, self).get_queryset()
         queryset = queryset.filter(
-            published__month=self.kwargs.get("month"),
             published__year=self.kwargs.get("year")
         ).exclude(published__month=current_month, published__year=current_year)
         return queryset
