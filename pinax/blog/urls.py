@@ -21,7 +21,7 @@ app_name = "pinax_blog"
 
 urlpatterns = [
     url(r"^$", BlogIndexView.as_view(), name="blog"),
-    url(r"^archives/(?P<year>\d{4})/(?P<month>\d{2})/$", BlogArchiveView.as_view(), name="blog_archive"),
+    url(r"^archives/(?P<year>\d{4})/$", BlogArchiveView.as_view(), name="blog_archive"),
     url(r"^section/(?P<section>[-\w]+)/$", SectionIndexView.as_view(), name="blog_section"),
     url(r"^post/(?P<post_pk>\d+)/$", StaffPostDetailView.as_view(), name="blog_post_pk"),
     url(r"^post/(?P<post_secret_key>\w+)/$", SecretKeyPostDetailView.as_view(), name="blog_post_secret"),
