@@ -7,6 +7,7 @@ from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 from django.views.generic import (
     CreateView,
@@ -77,8 +78,14 @@ class SectionIndexView(BlogIndexView):
 class BlogArchiveView(BlogIndexView):
 
     def get_queryset(self):
+        current_time = timezone.now()
+        current_month = current_time.month
+        current_year = current_time.year
         queryset = super(BlogArchiveView, self).get_queryset()
-        queryset = queryset.filter(published__month=self.kwargs.get("month"), published__year=self.kwargs.get("year"))
+        queryset = queryset.filter(
+            published__month=self.kwargs.get("month"),
+            published__year=self.kwargs.get("year")
+        ).exclude(published__month=current_month, published__year=current_year)
         return queryset
 
 
